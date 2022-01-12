@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <p>test home page</p>
+            <h1>To-Do List to success</h1>
             {currentUser && (
               <>
                 <ToDo setCurrentuser={setCurrentUser} />

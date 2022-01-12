@@ -1,0 +1,26 @@
+.section {
+  display: flex;
+  justify-content: center;
+}
+
+.section h2 {
+  cursor: pointer;
+}
+
+.section h2.active {
+  text-decoration: underline;
+}
+
+h2 {
+  margin: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin: 10px;
+  border-radius: 50px;
+}

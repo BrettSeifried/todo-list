@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import AuthForm from '../components/AuthForm';
 import { signInUser, signUpUser } from '../services/users';
 import classNames from 'classnames';
+import './Auth.css';
 
 export default function Auth({ setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [type, setType] = useState('signin');
+  const [type, setType] = useState('Sign In');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const resp =
-        type === 'signin' ? await signInUser(email, password) : await signUpUser(email, password);
+        type === 'Sign In' ? await signInUser(email, password) : await signUpUser(email, password);
       setCurrentUser(resp);
       //   console.log('Auth.js', resp);
     } catch {
@@ -26,17 +27,17 @@ export default function Auth({ setCurrentUser }) {
       <div className="section">
         <h2
           onClick={() => {
-            setType('signin');
+            setType('Sign In');
           }}
-          className={classNames({ active: type === 'signin' })}
+          className={classNames({ active: type === 'Sign In' })}
         >
           Sign In
         </h2>
         <h2
           onClick={() => {
-            setType('signup');
+            setType('Sign Up');
           }}
-          className={classNames({ active: type === 'signup' })}
+          className={classNames({ active: type === 'Sign Up' })}
         >
           Sign Up
         </h2>
