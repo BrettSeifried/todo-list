@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { getUser, logout } from './services/users.js';
 import Auth from './views/Auth.js';
 import ToDo from './views/ToDoList';
-import { fetchToDos } from './services/todo';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(getUser());
