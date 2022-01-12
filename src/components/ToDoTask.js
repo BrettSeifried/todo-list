@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function ToDoTask({ task }) {
+export default function ToDoTask({ todo, handleClick }) {
   return (
     <div>
-      {task}
-      <input type="radio"></input>
+      {todo.task}
+      <input checked={todo.is_complete} type="checkbox" onChange={() => handleClick(todo)}></input>
     </div>
   );
 }

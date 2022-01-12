@@ -11,6 +11,7 @@ export async function createToDo(task) {
 }
 
 export async function toggleCompleted(id, is_complete) {
+  console.log(id);
   const resp = await client.from('todos').update({ is_complete }).eq('id', id);
   return checkError(resp);
 }

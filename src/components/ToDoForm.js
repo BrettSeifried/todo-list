@@ -33,9 +33,6 @@ export default function ToDoForm({
               onChange={(e) => setTask(e.target.value)}
             />
           </div>
-          <div>
-            <input type="submit" />
-          </div>
           <button onClick={handleSubmit}>Create New Task</button>
         </form>
       </div>
