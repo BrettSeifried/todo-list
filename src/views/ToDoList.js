@@ -1,29 +1,22 @@
 import React, { useState } from 'react';
-import AuthForm from '../components/AuthForm';
-import { signInUser, signUpUser } from '../services/users';
-import classNames from 'classnames';
 import { createToDo, fetchToDos } from '../services/todo';
-import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import ToDoForm from '../components/ToDoForm';
+import ToDoTask from '../components/ToDoTask';
 
 export default function ToDo() {
   // set state
-  const { id } = useParams();
   const [task, setTask] = useState('');
-  const [currentTask, setCurrentTask] = useState('');
-
-  // Get Data(tasks by id)
-  //   useEffect(() => {
-  //     fetchToDos(id).then((data) => setTask(data));
-  //   }, [id]);
+  const [currentTask, setCurrentTask] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const taskData = await fetchToDos();
+      const data = await fetchToDos();
+      console.log(data);
+      setCurrentTask(data);
     };
     fetchData();
-  });
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,8 +31,19 @@ export default function ToDo() {
   // Return ToDO form Radio button to toggle
 
   return (
-    <div>
-      <ToDoForm task={task} setTask={setTask} handleSubmit={handleSubmit} />
-    </div>
+    <>
+      <div>
+        <ToDoForm task={task} setTask={setTask} handleSubmit={handleSubmit} />
+      </div>
+      <div>
+        <ul>
+          {currentTask.map((obj) => (
+            <div key={currentTask.id}>
+              <ToDoTask input="radio" {...obj} />
+            </div>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
