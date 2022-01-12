@@ -29,7 +29,6 @@ export default function ToDo() {
   };
 
   const handleClick = async (todo) => {
-    console.log(todo);
     await toggleCompleted(todo.id, !todo.is_complete);
     setTask((prevState) =>
       prevState.map((todo) =>
