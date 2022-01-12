@@ -4,7 +4,11 @@ export default function ToDoTask({ todo, handleClick }) {
   return (
     <div>
       {todo.task}
-      <input checked={todo.is_complete} type="checkbox" onChange={() => handleClick(todo)}></input>
+      <input
+        checked={todo.id.is_complete}
+        type="checkbox"
+        onChange={() => handleClick(todo)}
+      ></input>
     </div>
   );
 }
