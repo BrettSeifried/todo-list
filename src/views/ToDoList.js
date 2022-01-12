@@ -12,7 +12,7 @@ export default function ToDo() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchToDos();
-      console.log(data);
+      //   console.log(data);
       setCurrentTask(data);
     };
     fetchData();

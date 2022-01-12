@@ -1,12 +1,10 @@
 import React from 'react';
-import { logout, getUser } from '../services/users';
-import { useState } from 'react';
 
 export default function ToDoForm({
   task,
   setTask,
   currentTask,
-  setCurrentTask,
+  // setCurrentTask,
   handleSubmit,
   errorMessage,
 }) {
