@@ -2,7 +2,9 @@ import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useState } from 'react';
 import { getUser, logout } from './services/users.js';
-import { Auth } from 'react';
+import Auth from './views/Auth.js';
+import ToDo from './views/ToDoList';
+import { fetchToDos } from './services/todo';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(getUser());
@@ -19,8 +21,8 @@ function App() {
             <p>test home page</p>
             {currentUser && (
               <>
-                <h1> Your to-do List</h1>
-                <button onClick={logout}>Logout</button>
+                <ToDo setCurrentuser={setCurrentUser} />
+                <button onClick={logoutUser}>Logout</button>
               </>
             )}
             {!currentUser && <Auth setCurrentUser={setCurrentUser} />}
