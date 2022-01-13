@@ -12,7 +12,6 @@ export default function ToDo() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchToDos();
-      //   console.log(data);
       setCurrentTask(data);
     };
     fetchData();
@@ -41,18 +40,14 @@ export default function ToDo() {
 
   return (
     <>
-      <div>
-        <ul>
-          {currentTasks.map((todo) => (
-            <div key={todo.id}>
-              <ToDoTask todo={todo} handleClick={handleClick} />
-            </div>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <ToDoForm task={task} setTask={setTask} handleSubmit={handleSubmit} />
-      </div>
+      <ul>
+        {currentTasks.map((todo) => (
+          <div key={todo.id}>
+            <ToDoTask todo={todo} handleClick={handleClick} />
+          </div>
+        ))}
+      </ul>
+      <ToDoForm task={task} setTask={setTask} handleSubmit={handleSubmit} />
     </>
   );
 }

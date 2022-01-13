@@ -16,7 +16,6 @@ export default function Auth({ setCurrentUser }) {
       const resp =
         type === 'Sign In' ? await signInUser(email, password) : await signUpUser(email, password);
       setCurrentUser(resp);
-      //   console.log('Auth.js', resp);
     } catch {
       setErrorMessage('Sign in failed, Try again.');
     }

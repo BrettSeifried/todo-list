@@ -19,8 +19,7 @@ export default function AuthForm({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-      </div>
-      <div className="input-password">
+
         <label>Password</label>
         <input
           placeholder="password"
@@ -28,9 +27,7 @@ export default function AuthForm({
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div>
-          <input type="submit" />
-        </div>
+        <input type="submit" />
       </div>
     </form>
   );
