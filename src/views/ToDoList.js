@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createToDo, fetchToDos, toggleCompleted } from '../services/todo';
+import { createToDo, fetchToDos, toggleCompleted, deleteTaskById } from '../services/todo';
 import { useEffect } from 'react';
 import ToDoForm from '../components/ToDoForm';
 import ToDoTask from '../components/ToDoTask';
@@ -25,6 +25,7 @@ export default function ToDo() {
     } catch {
       alert('error');
     }
+    window.location.reload();
   };
 
   const handleClick = async (todo) => {
@@ -36,6 +37,18 @@ export default function ToDo() {
     );
   };
 
+  // Delete Times
+  const handleDelete = async ({ id, name }) => {
+    const shouldDelete = confirm(`Are you sure you want to delete ${name}?`);
+
+    if (shouldDelete) {
+      await deleteTaskById(id);
+      const resp = await fetchToDos();
+      setTask(resp);
+    }
+    window.location.reload();
+  };
+
   // Return ToDO form Radio button to toggle
 
   return (
@@ -43,7 +56,7 @@ export default function ToDo() {
       <ul>
         {currentTasks.map((todo) => (
           <div key={todo.id}>
-            <ToDoTask todo={todo} handleClick={handleClick} />
+            <ToDoTask todo={todo} handleDelete={handleDelete} handleClick={handleClick} />
           </div>
         ))}
       </ul>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ToDoTask({ todo, handleClick }) {
+export default function ToDoTask({ todo, handleClick, handleDelete }) {
   return (
     <div>
       {todo.task}
@@ -9,6 +9,7 @@ export default function ToDoTask({ todo, handleClick }) {
         type="checkbox"
         onChange={() => handleClick(todo)}
       ></input>
+      <button onClick={() => handleDelete(todo)}>delete</button>
     </div>
   );
 }
